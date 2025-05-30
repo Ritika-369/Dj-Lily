@@ -31,7 +31,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  padding: 0 40px;
 }
 
 /* Video Styling */
@@ -56,9 +55,5 @@
 
   .video-section h3 {
     font-size: 2rem;
-  }
-
-  .video-container {
-    padding: 0 20px;
   }
 }
