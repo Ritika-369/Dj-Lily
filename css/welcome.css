@@ -1,72 +1,145 @@
+/* Section styling */
 .welcome-section {
-  height: 90vh;
-  background: linear-gradient(to top, rgba(0, 0, 0, -0.25), rgba(0, 0, 0, 0.3)),
-    url(../images/welcomeimg.jpg) no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
-  color: #ffffff;
-  text-align: center;
-  padding: 0 20px;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.welcome-section::before {
-  content: "";
+/* Slideshow container */
+.slideshow {
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-  border-radius: inherit;
 }
 
+/* Slideshow images */
+.slideshow img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fadeSlideshow 16s infinite;
+}
+
+/* Each image fade timing */
+.slideshow img:nth-child(1) {
+  animation-delay: 0s;
+}
+.slideshow img:nth-child(2) {
+  animation-delay: 4s;
+}
+.slideshow img:nth-child(3) {
+  animation-delay: 8s;
+}
+.slideshow img:nth-child(4) {
+  animation-delay: 12s;
+}
+
+/* Fade animation */
+@keyframes fadeSlideshow {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Overlay with deep red gradient */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgb(35 17 17 / 85%),
+    rgba(128, 13, 13, 0.5)
+  );
+  z-index: 2;
+}
+
+/* Welcome content container */
 .welcome-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 700px;
-  margin: auto;
-  padding: 20px;
-  animation: fadeInUp 1.2s ease;
+  padding: 40px 30px;
+  background: rgba(255 255 255 / 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(128, 13, 13, 0.7);
+  text-align: center;
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
 }
 
+/* Heading */
 .welcome-content h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(128, 13, 13, 0.9);
 }
 
+/* Highlighted span */
+.welcome-content h1 .highlight {
+  color: rgb(230, 70, 70);
+  text-shadow: 2px 2px 12px rgba(230, 70, 70, 0.9);
+}
+
+/* Paragraph */
 .welcome-content p {
-  font-size: 1.4rem;
-  margin-bottom: 30px;
-  font-weight: 400;
-  color: #ddd;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #f0d6d6;
+  text-shadow: 1px 1px 5px rgba(128, 13, 13, 0.7);
 }
 
-.btn-book {
+/* Button */
+.btn {
   display: inline-block;
-  font-size: 1.1rem;
-  color: #000;
-  background-color: #ffd000;
-  padding: 14px 28px;
-  border-radius: 8px;
+  padding: 12px 30px;
+  background-color: rgb(128, 13, 13);
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
   text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(128, 13, 13, 0.7);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-.btn-book:hover {
-  background-color: #ffcc00;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+.btn:hover {
+  background-color: rgb(170, 40, 40);
+  box-shadow: 0 6px 20px rgba(170, 40, 40, 0.9);
 }
 
-/* Simple fade-in animation */
+/* Fade-in animation for welcome content */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
   100% {
     opacity: 1;
@@ -74,18 +147,18 @@
   }
 }
 
-/* Responsive typography */
-@media (max-width: 600px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .welcome-content {
+    max-width: 90%;
+    padding: 30px 20px;
+  }
+
   .welcome-content h1 {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
   .welcome-content p {
-    font-size: 1.1rem;
-  }
-
-  .btn-book {
     font-size: 1rem;
-    padding: 12px 24px;
   }
 }
